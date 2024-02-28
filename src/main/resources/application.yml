@@ -1,1 +1,4 @@
-
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://amirholya01:amir1365@cluster0.yroiiwj.mongodb.net/amir_final_exam_db?retryWrites=true&w=majority&appName=Cluster0
