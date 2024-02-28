@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AmirBackEndApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AmirBackEndApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AmirBackEndApplication.class, args);
+    }
 
 }
