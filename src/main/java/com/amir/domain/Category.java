@@ -9,6 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.HashSet;
 import java.util.Set;
 
+
+/**
+ * Represents a category entity in the application.
+ */
 @Data
 @Document(collection = "category")
 public class Category {
@@ -20,5 +24,5 @@ public class Category {
     private String description;
 
     @DBRef
-    private Set<Video> videos = new HashSet<>();
+    private Set<Video> videos = new HashSet<>(); //The videos associated with the category
 }
