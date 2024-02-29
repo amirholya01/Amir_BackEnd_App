@@ -5,5 +5,8 @@ spring:
 
 
 amir:
+  app:
+    jwtSecretKey: FrauGucci-SecretKey
+    jwtExpirationMs: 864000000
   file:
     extension: mp4, mkv, webm, mpg, 3gp, avi, tc
