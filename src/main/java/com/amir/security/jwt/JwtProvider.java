@@ -17,6 +17,13 @@ public class JwtProvider {
     @Value("${amir.app.jwtExpiration}")
     private int jwtExpiration;
 
+
+    /**
+     * Generate a JWT token for the authenticated user.
+     *
+     * @param authentication The authentication object representing the authenticated user.
+     * @return The JWT token.
+     */
     public String generateJwtToken(Authentication authentication){
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         return Jwts.builder()
@@ -28,6 +35,13 @@ public class JwtProvider {
     }
 
 
+
+    /**
+     * Validate the JWT token.
+     *
+     * @param authToken The JWT token to validate.
+     * @return True if the token is valid, false otherwise.
+     */
     public boolean validateJwtToken(String authToken){
         try {
             Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJwt(authToken);
@@ -44,6 +58,13 @@ public class JwtProvider {
         return false;
     }
 
+
+    /**
+     * Retrieve the username from the JWT token.
+     *
+     * @param token The JWT token.
+     * @return The username extracted from the token.
+     */
     public String getUserNameFromJwtToken(String token){
         return Jwts.parser()
                 .setSigningKey(jwtSecretKey)
