@@ -20,4 +20,5 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
      * @return An optional containing the category if found, otherwise empty.
      */
     Optional<Category> findByName(String categoryName);
+
 }

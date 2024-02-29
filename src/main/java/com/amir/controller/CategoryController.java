@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("category")
@@ -40,4 +41,6 @@ public class CategoryController {
     public ResponseEntity<List<Category>> findAllCategories(){
         return new ResponseEntity<>(categoryService.findAllCategories(), HttpStatus.OK);
     }
+
+
 }
