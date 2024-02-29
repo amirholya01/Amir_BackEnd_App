@@ -1,8 +1,7 @@
 package com.amir.security.jwt;
 
 import com.amir.security.service.UserDetailsImpl;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -26,5 +25,29 @@ public class JwtProvider {
                 .setExpiration(new Date(new Date().getTime() + jwtExpiration * 1000L))
                 .signWith(SignatureAlgorithm.HS256, jwtSecretKey)
                 .compact();
+    }
+
+
+    public boolean validateJwtToken(String authToken){
+        try {
+            Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJwt(authToken);
+            return true;
+        }catch (SignatureException exception){
+            System.out.println("Invalid JWT signature: " + exception.getMessage());
+        }catch (ExpiredJwtException exception){
+            System.out.println("Expired JWT token: " + exception.getMessage());
+        }catch (UnsupportedJwtException exception){
+            System.out.println("Unsupported JWT token: " + exception.getMessage());
+        }catch (IllegalArgumentException exception){
+            System.out.println("JWT claims string is empty: " + exception.getMessage());
+        }
+        return false;
+    }
+
+    public String getUserNameFromJwtToken(String token){
+        return Jwts.parser()
+                .setSigningKey(jwtSecretKey)
+                .parseClaimsJwt(token)
+                .getBody().getSubject();
     }
 }
