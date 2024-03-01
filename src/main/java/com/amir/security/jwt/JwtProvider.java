@@ -14,7 +14,7 @@ public class JwtProvider {
     @Value("${amir.app.jwtSecretKey}")
     private String jwtSecretKey;
 
-    @Value("${amir.app.jwtExpiration}")
+    @Value("${amir.app.jwtExpirationMs}")
     private int jwtExpiration;
 
 
@@ -47,13 +47,13 @@ public class JwtProvider {
             Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJwt(authToken);
             return true;
         }catch (SignatureException exception){
-            System.out.println("Invalid JWT signature: " + exception.getMessage());
+           // System.out.println("Invalid JWT signature: " + exception.getMessage());
         }catch (ExpiredJwtException exception){
-            System.out.println("Expired JWT token: " + exception.getMessage());
+           // System.out.println("Expired JWT token: " + exception.getMessage());
         }catch (UnsupportedJwtException exception){
-            System.out.println("Unsupported JWT token: " + exception.getMessage());
+            //System.out.println("Unsupported JWT token: " + exception.getMessage());
         }catch (IllegalArgumentException exception){
-            System.out.println("JWT claims string is empty: " + exception.getMessage());
+           // System.out.println("JWT claims string is empty: " + exception.getMessage());
         }
         return false;
     }
