@@ -129,8 +129,8 @@ public class AuthController {
         // Create a new user entity with provided details
         User user = new User(
                 signupRequest.getUsername(),
-                encoder.encode(signupRequest.getPassword()),
                 signupRequest.getEmail(),
+                encoder.encode(signupRequest.getPassword()),
                 signupRequest.getActive()
         );
 
