@@ -70,14 +70,13 @@ public class User {
     /**
      * Constructor for the User class with all fields.
      *
-     * @param id       The unique identifier for the user.
      * @param username The username of the user.
      * @param email    The email address of the user.
      * @param password The password of the user.
      * @param active   The status indicating whether the user is active or not.
      */
-    public User(String id, String username, String email, String password, Integer active) {
-        this.id = id;
+    public User( String username, String email, String password, Integer active) {
+
         this.username = username;
         this.email = email;
         this.password = password;
